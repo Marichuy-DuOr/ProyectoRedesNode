@@ -42,4 +42,11 @@ module.exports = {
             .catch(err => { console.log(err); return err })
 
     },
+
+    getRecipeEdamam: async(req) => {
+        return await axios.get(`https://api.edamam.com/search?r=http://www.edamam.com/ontologies/edamam.owl%23${req}&app_id=6a83a834&app_key=5582eec5eb9c6421373372c355cacc45`)
+            .then(data => data)
+            .catch(err => { console.log(err); return err })
+
+    },
 }
