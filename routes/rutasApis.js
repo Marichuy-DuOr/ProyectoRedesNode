@@ -7,7 +7,7 @@ const middleware = require('./middleware')
 
 const { body, param, validationResult } = require('express-validator');
 
-router.use(middleware.checkToken);
+//router.use(middleware.checkToken);
 
 router.get('/randomSpoonacular', async(req, res) => {
     const data = await apis.getRandomSpoonacular();
@@ -30,5 +30,11 @@ router.get('/buscarEdaman/:busqueda', async(req, res) => {
     const data = await apis.getBusquedaEdaman(req.params.busqueda);
     res.json(data.data); //la respuesta del servidor se genera aqui
 });
+
+router.get('/recipeEdamam/:uri', async(req, res) => {
+    const data = await apis.getRecipeEdamam(req.params.uri);
+    res.json(data.data); //la respuesta del servidor se genera aqui
+});
+
 
 module.exports = router;
