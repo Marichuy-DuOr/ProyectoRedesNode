@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const connection = require("./conexion");
 const cors = require('cors');
 const misrutas = require('./routes/rutas');
-const misrutasT = require('./routes/rutasToken');
 const misrutasApis = require('./routes/rutasApis');
+const misrutasT = require('./routes/rutasToken');
 const PORT = process.env.PORT || 3000;
 
 require('dotenv').config();

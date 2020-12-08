@@ -31,8 +31,13 @@ router.get('/buscarEdaman/:busqueda', async(req, res) => {
     res.json(data.data); //la respuesta del servidor se genera aqui
 });
 
-router.get('/recipeEdamam/:uri', async(req, res) => {
-    const data = await apis.getRecipeEdamam(req.params.uri);
+router.get('/similarSpoonacular/:id', async(req, res) => {
+    const data = await apis.getSimilarSpoonacular(req.params.id);
+    res.json(data.data); //la respuesta del servidor se genera aqui
+});
+
+router.post('/recipeEdamam', async(req, res) => {
+    const data = await apis.getRecipeEdamam(req.body.uri);
     res.json(data.data); //la respuesta del servidor se genera aqui
 });
 
