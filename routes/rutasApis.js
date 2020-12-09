@@ -41,5 +41,9 @@ router.post('/recipeEdamam', async(req, res) => {
     res.json(data.data); //la respuesta del servidor se genera aqui
 });
 
+router.get('/buscar2Edaman/:busqueda', async(req, res) => {
+    const data = await apis.getBusqueda2Edaman(req.params.busqueda);
+    res.json(data.data); //la respuesta del servidor se genera aqui
+});
 
 module.exports = router;

@@ -49,4 +49,11 @@ module.exports = {
             .catch(err => { console.log(err); return err })
 
     },
+
+    getBusqueda2Edaman: async(req) => {
+        return await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${req}&app_id=45eeb26b&app_key=decdabb4cf98db554757d037ff65b554`)
+            .then(data => data)
+            .catch(err => { console.log(err); return err })
+
+    },
 }

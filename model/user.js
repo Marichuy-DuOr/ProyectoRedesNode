@@ -111,4 +111,46 @@ module.exports = {
         })
     },
 
+    /*------------------------------------------ Edamam Table ------------------------------------------*/
+    
+    createUserRecipeEdamam: (connection, body, callback) => {
+        connection.query('insert into edamam SET ?', body, (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: null, success: true });
+        });
+    },
+
+    getUserRecipesEdamam: (connection, id_usuario, callback) => {
+        connection.query(`select * from edamam where id_usuario = ${id_usuario}`, (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: results, id: null, success: true });
+        })
+    },
+
+    getUserRecipeEdamam: (connection, params, callback) => {
+        connection.query(`select * from edamam where id_usuario = '${params.id_usuario}' and uri_receta = '${params.uri_receta}'`, (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: results, id: null, success: true });
+        })
+    },
+
+    deleteUserRecipeEdamam: (connection, id, callback) => {
+        connection.query(`delete from edamam where id = '${id}'`, (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: null, success: true });
+        })
+    },
+
 }

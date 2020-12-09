@@ -136,5 +136,49 @@ router.get('/userRecipeSpoonacular/:id_receta', [
     }))
 });
 
+router.post('/userRecipeEdamam', async(req, res) => {
+    let body = req.body;
+    body.id_usuario = req.idUsuario;
+    user.createUserRecipeEdamam(connection, body, (data => {
+        res.json(data);
+    }));
+});
+
+router.get('/userRecipeEdamam/:uri_receta', [
+    param('uri_receta').not().isEmpty().isString(),
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let params = req.params;
+    params.id_usuario = req.idUsuario;
+    console.log(params);
+    user.getUserRecipeEdamam(connection, params, (data => {
+        res.json(data);
+    }))
+});
+
+router.get('/userRecipesEdamam', [], (req, res) => {
+    let id_usuario = req.idUsuario;
+    user.getUserRecipesEdamam(connection, id_usuario, (data => {
+        res.json(data);
+    }))
+});
+
+router.delete('/userRecipeEdamam/:id', [
+    param('id').not().isEmpty().isNumeric()
+], (req, res) => {
+    const errors = validationResult(req);
+    let id = req.params.id;
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    user.deleteUserRecipeEdamam(connection, id, (data => {
+        res.json(data);
+    }))
+});
 
 module.exports = router;
