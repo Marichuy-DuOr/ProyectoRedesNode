@@ -154,7 +154,7 @@ router.get('/userRecipeEdamam/:uri_receta', [
     }
     let params = req.params;
     params.id_usuario = req.idUsuario;
-    console.log(params);
+    // console.log(params);
     user.getUserRecipeEdamam(connection, params, (data => {
         res.json(data);
     }))
